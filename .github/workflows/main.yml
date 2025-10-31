@@ -25,11 +25,17 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+
       - uses: actions/cache@v3
         with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
+          path: |
+            Library
+            ~/.npm
+            ~/.cache/unity3d
+          key: ${{ runner.os }}-unity-${{ matrix.targetPlatform }}-${{ hashFiles('Packages/manifest.json') }}
+          restore-keys: |
+            ${{ runner.os }}-unity-${{ matrix.targetPlatform }}-
+            
       - if: matrix.targetPlatform == 'Android'
         uses: jlumbroso/free-disk-space@v1.3.1
       - uses: game-ci/unity-builder@v4
