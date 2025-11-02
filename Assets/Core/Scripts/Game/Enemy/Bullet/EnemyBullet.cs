@@ -31,10 +31,17 @@ public class EnemyBullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"{collision.gameObject.tag}, {collision.gameObject.name}");
+        // if (collision.gameObject.)
+
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player");
             //ЛОГИКА СТОЛКНОВЕНИЕ С ИГРОКОМ
+        }
+
+        if (collision.gameObject.TryGetComponent<HealthCompponent>(out var health))
+        {
+            health.TakeOneDamage();
         }
         
         _bounces++;

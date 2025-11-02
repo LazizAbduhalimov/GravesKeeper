@@ -2662,7 +2662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1391236135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3685,32 +3685,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1771611637448279190, guid: 8659721cb3f1e9d45bc7a5d5172da52c, type: 3}
   m_PrefabInstance: {fileID: 821105864266221992}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1827647075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2934878335910000674, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-  m_PrefabInstance: {fileID: 7845822560983511513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1827647076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2113701585224269358, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
   m_PrefabInstance: {fileID: 7845822560983511513}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1827647077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827647075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38efb179cb962b4c99bab5c4d21f6ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyScript
-  _shootPoint: {fileID: 1814532080592523772}
-  _shootDelay: 2
-  _target: {fileID: 1766447800}
-  _poolManager: {fileID: 165536030}
 --- !u!4 &1904046996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7883199631806708165, guid: b49586ddfec65d64d91eec750143a446, type: 3}
@@ -4265,11 +4244,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8659721cb3f1e9d45bc7a5d5172da52c, type: 3}
---- !u!4 &1814532080592523772 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 220112022069639722, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-  m_PrefabInstance: {fileID: 7845822560983511513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2786407990055272525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4408,14 +4382,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 855608602}
     m_Modifications:
-    - target: {fileID: 220112022069639722, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 220112022069639722, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 2113701585224269358, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4460,25 +4426,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7092135038615694314, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      propertyPath: m_Size.z
-      value: 0.8465602
-      objectReference: {fileID: 0}
-    - target: {fileID: 7092135038615694314, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      propertyPath: m_Center.x
-      value: -2.0207792e-16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7092135038615694314, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      propertyPath: m_Center.z
-      value: -0.076719955
-      objectReference: {fileID: 0}
+    - target: {fileID: 4869225150252108004, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1766447800}
+    - target: {fileID: 4869225150252108004, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 165536030}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2934878335910000674, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1827647077}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32b608f70ed38ed46a362d6a28b01caf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
