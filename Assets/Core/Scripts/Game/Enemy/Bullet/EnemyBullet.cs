@@ -7,8 +7,8 @@ public class EnemyBullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private float _speed;
-    [SerializeField] private int _bouncesBeforeDie;
     [SerializeField] private float _angleError;
+    [SerializeField] private int _bouncesBeforeDie;
 
     private int _bounces;
     private Rigidbody _rb;
@@ -63,5 +63,12 @@ public class EnemyBullet : MonoBehaviour
     {
         _bounces = 0;
         gameObject.SetActive(false);
+    }
+
+    public void Initialize(float speed,float angleError, int bounces)
+    {
+        _speed = speed;
+        _bouncesBeforeDie = bounces;
+        _angleError = angleError;
     }
 }
