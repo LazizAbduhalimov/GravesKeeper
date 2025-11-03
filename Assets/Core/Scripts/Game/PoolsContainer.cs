@@ -10,6 +10,7 @@ public class AllPools : MonoBehaviour
     public PoolContainer RockPool;
     public PoolContainer CactusPool;
     public PoolContainer LavaPool;
+    public PoolContainer LinesPool;
 
     public void Awake()
     {

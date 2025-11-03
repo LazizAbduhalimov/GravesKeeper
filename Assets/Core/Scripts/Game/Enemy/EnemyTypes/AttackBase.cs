@@ -5,10 +5,12 @@ public abstract class AttackBase : MonoBehaviour
     [SerializeField] protected float AttackRate = 2;
     protected float PassedAttackTime;
     protected BarController ReloadBar;
+    private Animator animator;
 
     protected virtual void Awake()
     {
         ReloadBar = GetComponentInChildren<BarController>();
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void TryAttack()
@@ -17,6 +19,7 @@ public abstract class AttackBase : MonoBehaviour
         if (PassedAttackTime >= AttackRate)
         {
             PassedAttackTime = 0;
+            animator?.SetTrigger("Attack");
             Attack();
         }
     }
