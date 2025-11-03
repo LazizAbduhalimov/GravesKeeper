@@ -184,21 +184,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _shootError
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
       propertyPath: _poolManager
       value: 
       objectReference: {fileID: 734560351}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletBounces
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -385,21 +373,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _shootError
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
       propertyPath: _poolManager
       value: 
       objectReference: {fileID: 734560351}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletBounces
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -972,21 +948,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _shootError
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
       propertyPath: _poolManager
       value: 
       objectReference: {fileID: 734560351}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletBounces
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1062,21 +1026,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _shootError
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
       propertyPath: _poolManager
       value: 
       objectReference: {fileID: 734560351}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletBounces
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1188,21 +1140,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _shootError
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
       propertyPath: _poolManager
       value: 
       objectReference: {fileID: 734560351}
-    - target: {fileID: 5268835521428404101, guid: 2d4f08e65ab3b954ba97935fa7d734b9, type: 3}
-      propertyPath: _bulletBounces
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
