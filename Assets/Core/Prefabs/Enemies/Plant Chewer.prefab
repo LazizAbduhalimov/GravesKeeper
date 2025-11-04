@@ -176,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 1314333146917796487}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4d06b7521b266b74daa7ed07c48ac54f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 239662f82bb8e70439d2fd80fe00cd6d, type: 2}
+  m_Controller: {fileID: 22100000, guid: 730ab75cb9259bd48a5cfc3f2929aba7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   _bulletSpeed: 11
   _bulletCreateTransform: {fileID: 2856428693195658495}
   _bulletsPoolData: {fileID: 0}
+  _lineRendererPool: {fileID: 0}
+  _previewLength: 10
 --- !u!1 &2234170117190238639
 GameObject:
   m_ObjectHideFlags: 0

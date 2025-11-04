@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a840a2d186b3df43917d1596fead515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrickBuilder
-  BrickPrefab: {fileID: 5770480167734321192, guid: e435bf0b185f2c6439f1632baeb22806, type: 3}
+  skullsLeft: {fileID: 0}
+  BrickPrefab: {fileID: 418609174623352297, guid: e435bf0b185f2c6439f1632baeb22806, type: 3}
   PreviewBrick: {fileID: 0}
   _spawnDistance: 1
+  _maxCharges: 3
 --- !u!114 &6526364780024516382
 MonoBehaviour:
   m_ObjectHideFlags: 0

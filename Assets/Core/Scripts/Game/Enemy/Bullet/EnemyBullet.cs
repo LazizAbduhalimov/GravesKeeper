@@ -35,6 +35,15 @@ public class EnemyBullet : MonoBehaviour
         if (go.TryGetComponent<PlayerMb>(out var player))
         {
             player.Stun();
+            
+                // Push player back
+                if (player.TryGetComponent<Rigidbody>(out var playerRb))
+                {
+                    Vector3 pushDirection = (player.transform.position - transform.position).normalized;
+                    pushDirection.y = 0; // Keep on ground level
+                    float pushForce = 4500; // Adjust force as needed
+                    playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+                }
         }
 
         if (go.TryGetComponent<HealthCompponent>(out var health))
@@ -53,9 +62,9 @@ public class EnemyBullet : MonoBehaviour
             healthComp.TakeOneDamage();
         }
         
+        SoundManager.Instance.PlayFX($"hit{Random.Range(1, 4)}");
         if (hasScore)
         {
-            SoundManager.Instance.PlayFX($"hit{Random.Range(1, 4)}");
             var score = 5;
             Bank.AddScore(this, score);
             Damages.Instance.SpawnScore($"+{score}", collision.transform.position);

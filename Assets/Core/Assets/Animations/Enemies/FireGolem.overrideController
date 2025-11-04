@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FireGolem
+  m_Controller: {fileID: 9100000, guid: deeecd7be6ee5694fb974a1b34681343, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 874b351a5b6a7ae43bac2798a0840f74, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 60793efd37673bb4999887b155cb5129, type: 3}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: d84063f93df81ee49b0ce55a0d149cca, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 844691e084cadd14cb5d2736e68e1c98, type: 3}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 30573b0dcede8964d8b75d5345548317, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 080f0974811a07043ade685dbe92aaee, type: 3}

@@ -29,11 +29,11 @@ public class TurretAttack : AttackBase
 
     private void Update()
     {
-        if (!_isAttacking)
+        if (!_isAttacking && !isPerformingAttack)
             PassedAttackTime += Time.deltaTime;
         
         RefreshReloadBar();
-        TryAttack();
+        TryAttackTurret();
         UpdatePreviewLine();
     }
 
@@ -97,32 +97,38 @@ public class TurretAttack : AttackBase
 
     protected override void Attack()
     {
-        CreateBullet(_bulletCreateTransform.position, transform.rotation);
+        // Start burst sequence
+        StartCoroutine(BurstAttackSequence());
     }
 
-    private bool TryAttack()
+    private System.Collections.IEnumerator BurstAttackSequence()
     {
-        if (PassedAttackTime < AttackRate && !_isAttacking)
-            return false;
-
         _isAttacking = true;
-
-        _passedTimeBtwAttack += Time.deltaTime;
-        if (_passedTimeBtwAttack >= _timeBtwAttack)
+        _bulletsCreatedWhileAttacking = 0;
+        
+        for (int i = 0; i < _bulletNumber; i++)
         {
-            Attack();
+            CreateBullet(_bulletCreateTransform.position, transform.rotation);
             _bulletsCreatedWhileAttacking++;
-            _passedTimeBtwAttack -= _timeBtwAttack;
-            PassedAttackTime -= AttackRate / _bulletNumber;
-
-            if (_bulletsCreatedWhileAttacking >= _bulletNumber)
+            
+            if (_bulletsCreatedWhileAttacking < _bulletNumber)
             {
-                _passedTimeBtwAttack = _timeBtwAttack;
-                _bulletsCreatedWhileAttacking = 0;
-                _isAttacking = false;
+                yield return new WaitForSeconds(_timeBtwAttack);
             }
         }
-        return true;
+        
+        _isAttacking = false;
+        _bulletsCreatedWhileAttacking = 0;
+    }
+
+    private void TryAttackTurret()
+    {
+        if (isPerformingAttack || _isAttacking) return;
+        
+        if (PassedAttackTime >= AttackRate)
+        {
+            StartCoroutine(PerformAttackSequence());
+        }
     }
 
     private void CreateBullet(Vector3 position, Quaternion rotation)

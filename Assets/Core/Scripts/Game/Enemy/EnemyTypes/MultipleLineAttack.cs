@@ -36,9 +36,22 @@ public class MultipleLineAttack : AttackBase
     private void Update()
     {
         // Let base TryAttack() manage PassedAttackTime and firing timing.
+        if (!_isAttacking && !isPerformingAttack)
+            PassedAttackTime += Time.deltaTime;
+            
         RefreshReloadBar();
-        TryAttack();
+        TryAttackMultiple();
         UpdatePreviewLines();
+    }
+    
+    private void TryAttackMultiple()
+    {
+        if (isPerformingAttack || _isAttacking) return;
+        
+        if (PassedAttackTime >= AttackRate)
+        {
+            StartCoroutine(PerformAttackSequence());
+        }
     }
 
     private void InitializePreviewLines()
@@ -128,8 +141,7 @@ public class MultipleLineAttack : AttackBase
     protected override void Attack()
     {
         // Start firing the configured spread queues
-        if (!_isAttacking)
-            StartCoroutine(FireQueues());
+        StartCoroutine(FireQueues());
     }
 
     private IEnumerator FireQueues()
@@ -144,8 +156,6 @@ public class MultipleLineAttack : AttackBase
         }
 
         _isAttacking = false;
-        // Reset cooldown so AttackBase can manage next attack (optional behaviour)
-        PassedAttackTime = 0f;
     }
 
     private void FireLines()

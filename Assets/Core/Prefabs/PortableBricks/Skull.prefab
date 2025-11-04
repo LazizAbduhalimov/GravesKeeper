@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5306092469087996970}
   - component: {fileID: 3226579082528572608}
   - component: {fileID: 4906430317891083284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d9032039b35c17b4b80d847356c9e33f, type: 3}
       propertyPath: m_Name
       value: skull
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9032039b35c17b4b80d847356c9e33f, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

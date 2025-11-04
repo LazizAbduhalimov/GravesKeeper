@@ -172,7 +172,6 @@ GameObject:
   - component: {fileID: 7055835090664281946}
   - component: {fileID: 2835347502174542997}
   - component: {fileID: 4666596577977008353}
-  - component: {fileID: 516222652568279376}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Untagged
@@ -220,7 +219,7 @@ Animator:
   m_GameObject: {fileID: 1755231138798925360}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d92cd258b7714ff459f07b849f8ede29, type: 3}
-  m_Controller: {fileID: 9100000, guid: a731cebdf0b0c014f98444b2ed7da5ee, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0ce4993094545c84e8cef7d57752c893, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -258,31 +257,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82f046af63647f3b1b1b8c92b0bf14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
-  AttackRate: 6
+  AttackRate: 8
   _spreadAngle: 90
-  _lines: 4
+  _lines: 5
   _queues: 2
-  _timeBetweenQueues: 1
+  _timeBetweenQueues: 1.5
   _bulletCreateTransform: {fileID: 4371843743165394756}
   _bulletsPoolData: {fileID: 0}
---- !u!114 &516222652568279376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755231138798925360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafb2d3d26d324842b0ebe566c3a9016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TurretAttack
-  AttackRate: 2
-  _bulletNumber: 1
-  _timeBtwAttack: 0.2
-  _bulletSpeed: 8
-  _bulletCreateTransform: {fileID: 0}
-  _bulletsPoolData: {fileID: 0}
+  _lineRendererPool: {fileID: 0}
+  _previewLength: 10
 --- !u!1 &1787323742149389304
 GameObject:
   m_ObjectHideFlags: 0

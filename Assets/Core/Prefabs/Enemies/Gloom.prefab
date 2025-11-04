@@ -378,6 +378,8 @@ MonoBehaviour:
   _timeBetweenQueues: 0.2
   _bulletCreateTransform: {fileID: 154063673457704546}
   _bulletsPoolData: {fileID: 0}
+  _lineRendererPool: {fileID: 0}
+  _previewLength: 5
 --- !u!114 &5509532067910164301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +398,8 @@ MonoBehaviour:
   _bulletSpeed: 8
   _bulletCreateTransform: {fileID: 5520924288146878282}
   _bulletsPoolData: {fileID: 0}
+  _lineRendererPool: {fileID: 0}
+  _previewLength: 10
 --- !u!1 &6184706176484178489
 GameObject:
   m_ObjectHideFlags: 0
