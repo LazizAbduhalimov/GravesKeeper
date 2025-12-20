@@ -38,10 +38,10 @@ public class BrickBuilder : MonoBehaviour {
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Build();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Build();
+        // }
 
         PreviewBuild();
     }

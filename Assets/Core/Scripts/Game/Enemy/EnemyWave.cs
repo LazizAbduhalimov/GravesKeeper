@@ -21,12 +21,12 @@ public class EnemyWave : MonoBehaviour
     {
         if (IsStarted) return;
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            StartText.gameObject.SetActive(false);
-            IsStarted = true;
-            StartCoroutine(SpawnWave());
-        }
+        // if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        // {
+        //     StartText.gameObject.SetActive(false);
+        //     IsStarted = true;
+        //     StartCoroutine(SpawnWave());
+        // }
     }
 
     public IEnumerator SpawnWave()
