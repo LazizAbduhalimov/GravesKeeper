@@ -1006,13 +1006,15 @@ GameObject:
   - component: {fileID: 8216283648643288618}
   - component: {fileID: 2945326344275439250}
   - component: {fileID: 2101145289835713039}
+  - component: {fileID: 4852761990728795185}
+  - component: {fileID: 2594661093609233721}
   m_Layer: 0
   m_Name: Golem Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5351477033006392859
 Transform:
   m_ObjectHideFlags: 0
@@ -1023,8 +1025,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.5704184, y: 0.49999857, z: -5.36}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7703628197873576748}
   - {fileID: 5424563249073339141}
@@ -1079,7 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
   PreviewLength: 15
   AttackRate: 6
-  MissileObjectPrefab: {fileID: 7809542201046776649, guid: c1e2b87ef11cfe34897a3b9fc9103d45, type: 3}
+  MissileObjectPrefab: {fileID: 3898384308897443114, guid: c1e2b87ef11cfe34897a3b9fc9103d45, type: 3}
   AttackAnimationDelay: 0.3
   _spreadAngle: 60
   _lines: 3
@@ -1139,6 +1141,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
   MaxHealth: 5
   CurrentHealth: 0
+--- !u!136 &4852761990728795185
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956830743488343814}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2594661093609233721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956830743488343814}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46cee944811b904eba8391e515a27fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enenmy
+  DeathScore: 100
 --- !u!1 &8053866035979789621
 GameObject:
   m_ObjectHideFlags: 0

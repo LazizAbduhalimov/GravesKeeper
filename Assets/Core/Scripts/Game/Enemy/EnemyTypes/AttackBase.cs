@@ -9,12 +9,12 @@ public abstract class AttackBase : MonoBehaviour
     [SerializeField] protected float PreviewLength = 15f;
     [SerializeField] protected float AttackRate = 2;
 
-    [SerializeField] protected PoolObject MissileObjectPrefab;
+    [SerializeField] protected EnemyBullet MissileObjectPrefab;
     
     [SerializeField, Tooltip("Delay after animation trigger before actual attack")]
     protected float AttackAnimationDelay = 0.3f;
     
-    protected PoolMono<PoolObject> MissilesPool;
+    protected PoolMono<EnemyBullet> MissilesPool;
     protected float PassedAttackTime;
     protected BarController ReloadBar;
     protected Animator animator;

@@ -196,5 +196,6 @@ public class MultipleLineAttack : AttackBase
         var bullet = MissilesPool.GetFreeElement(false);
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
+        bullet.Init(gameObject);
     }
 }

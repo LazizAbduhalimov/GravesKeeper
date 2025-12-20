@@ -130,6 +130,11 @@ public class EnemyWave : MonoBehaviour
         
         _isSpawning = false;
         OnAllWavesComplete();
+        
+        // Начинаем заново
+        _currentWaveIndex = 0;
+        yield return new WaitForSeconds(2f); // Небольшая пауза перед рестартом
+        StartCoroutine(SpawnWaves());
     }
     
     private IEnumerator SpawnWave(Wave wave)

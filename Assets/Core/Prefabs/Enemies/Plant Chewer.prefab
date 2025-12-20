@@ -139,13 +139,15 @@ GameObject:
   - component: {fileID: 4203192326587846936}
   - component: {fileID: -5996334114968102052}
   - component: {fileID: 3525023206701248175}
+  - component: {fileID: 2938051596589572940}
+  - component: {fileID: 3143730359940313044}
   m_Layer: 0
   m_Name: Plant Chewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2408408881075226810
 Transform:
   m_ObjectHideFlags: 0
@@ -156,8 +158,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.133873, y: 0.49999762, z: 2.501}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4964130501068763099}
   - {fileID: 1937625316190678850}
@@ -204,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretAttack
   PreviewLength: 15
   AttackRate: 4
-  MissileObjectPrefab: {fileID: 7809542201046776649, guid: c105486175207be4e9912db3f64b27f0, type: 3}
+  MissileObjectPrefab: {fileID: 3898384308897443114, guid: c105486175207be4e9912db3f64b27f0, type: 3}
   AttackAnimationDelay: 0.3
   _bulletNumber: 3
   _timeBtwAttack: 0.4
@@ -264,6 +266,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
   MaxHealth: 3
   CurrentHealth: 0
+--- !u!136 &2938051596589572940
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314333146917796487}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &3143730359940313044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314333146917796487}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46cee944811b904eba8391e515a27fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enenmy
+  DeathScore: 100
 --- !u!1 &2234170117190238639
 GameObject:
   m_ObjectHideFlags: 0

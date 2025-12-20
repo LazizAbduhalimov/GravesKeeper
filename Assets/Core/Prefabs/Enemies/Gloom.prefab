@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 4778030406786275555}
   - component: {fileID: 5273302219386389745}
   - component: {fileID: 7139824162094239338}
+  - component: {fileID: 8579010678077761159}
   m_Layer: 0
   m_Name: Gloom
   m_TagString: Untagged
@@ -362,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretAttack
   PreviewLength: 15
   AttackRate: 2
-  MissileObjectPrefab: {fileID: 3674402265416202093, guid: 80b609f0a37c4c24796924dabf7e8f17, type: 3}
+  MissileObjectPrefab: {fileID: 850247316891065965, guid: 80b609f0a37c4c24796924dabf7e8f17, type: 3}
   AttackAnimationDelay: 0.3
   _bulletNumber: 1
   _timeBtwAttack: 0.2
@@ -472,6 +473,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
   MaxHealth: 2
   CurrentHealth: 0
+--- !u!114 &8579010678077761159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46cee944811b904eba8391e515a27fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enenmy
+  DeathScore: 100
 --- !u!1 &6184706176484178489
 GameObject:
   m_ObjectHideFlags: 0

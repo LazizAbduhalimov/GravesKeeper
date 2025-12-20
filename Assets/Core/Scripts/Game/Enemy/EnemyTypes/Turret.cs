@@ -140,12 +140,10 @@ public class TurretAttack : AttackBase
         var bullet = MissilesPool.GetFreeElement(false);
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
-        
+        bullet.Init(gameObject);
         // GetComponent после SetActive для инициализации
-        var bulletComp = bullet.GetComponent<EnemyBullet>();
-        if (bulletComp != null)
-        {
-            bulletComp.Initialize(_bulletSpeed, 15, 3);
-        }
+        
+        bullet.Initialize(_bulletSpeed, 15, 3);
+        bullet.Init(gameObject);
     }
 }

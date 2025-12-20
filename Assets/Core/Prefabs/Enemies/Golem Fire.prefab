@@ -174,13 +174,15 @@ GameObject:
   - component: {fileID: 7968782950408645822}
   - component: {fileID: 3108928978744161491}
   - component: {fileID: 5449963580461366189}
+  - component: {fileID: 7680575862227365596}
+  - component: {fileID: 6145223299132135527}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3424004826610873772
 Transform:
   m_ObjectHideFlags: 0
@@ -191,8 +193,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.4584184, y: 0.4999981, z: -2.131}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3379551085427470771}
   - {fileID: 2979554343272477195}
@@ -247,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
   PreviewLength: 15
   AttackRate: 8
-  MissileObjectPrefab: {fileID: 7809542201046776649, guid: 634c4b5182d5d2547a937c591ad98923, type: 3}
+  MissileObjectPrefab: {fileID: 3898384308897443114, guid: 634c4b5182d5d2547a937c591ad98923, type: 3}
   AttackAnimationDelay: 0.3
   _spreadAngle: 90
   _lines: 5
@@ -307,6 +309,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
   MaxHealth: 7
   CurrentHealth: 0
+--- !u!136 &7680575862227365596
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755231138798925360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6145223299132135527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755231138798925360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46cee944811b904eba8391e515a27fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enenmy
+  DeathScore: 100
 --- !u!1 &1787323742149389304
 GameObject:
   m_ObjectHideFlags: 0

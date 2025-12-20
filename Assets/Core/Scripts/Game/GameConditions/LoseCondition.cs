@@ -6,6 +6,7 @@ namespace Game
     {
         public static LoseCondition Instance => _instance;
         public static LoseCondition _instance;
+        public GameObject JoystickToDisable;
         public GameObject UI;
         public BrickMb[] Bricks;
         private int _bricksLeft;
@@ -34,6 +35,7 @@ namespace Game
             _bricksLeft--;
             if (_bricksLeft < 1)
             {
+                JoystickToDisable.SetActive(false);
                 UI.SetActive(true);
                 Time.timeScale = 0f;
             }
