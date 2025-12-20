@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RotateToNearestTarget : MonoBehaviour
@@ -21,6 +22,7 @@ public class RotateToNearestTarget : MonoBehaviour
 
     private void Awake()
     {
+        _manualTargets = FindObjectsByType<BrickMb>(FindObjectsSortMode.None).Select(b => b.transform).ToArray();
         if (_pivot == null) _pivot = transform;
         _waitSearch = new WaitForSeconds(Mathf.Max(0.05f, _searchInterval));
     }

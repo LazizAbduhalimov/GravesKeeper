@@ -135,8 +135,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2408408881075226810}
   - component: {fileID: 1134344488702249343}
-  - component: {fileID: 3221194313328660829}
   - component: {fileID: 707317219832346823}
+  - component: {fileID: 4203192326587846936}
+  - component: {fileID: -5996334114968102052}
   m_Layer: 0
   m_Name: Plant Chewer
   m_TagString: Untagged
@@ -188,20 +189,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3221194313328660829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314333146917796487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b23f7677fcbe5c428c0b1b5010255c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateToTarget
-  _target: {fileID: 0}
-  _rotationSpeed: 15
 --- !u!114 &707317219832346823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,14 +201,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafb2d3d26d324842b0ebe566c3a9016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretAttack
+  PreviewLength: 15
   AttackRate: 4
+  MissileObjectPrefab: {fileID: 7809542201046776649, guid: c105486175207be4e9912db3f64b27f0, type: 3}
+  AttackAnimationDelay: 0.3
   _bulletNumber: 3
   _timeBtwAttack: 0.4
   _bulletSpeed: 11
   _bulletCreateTransform: {fileID: 2856428693195658495}
-  _bulletsPoolData: {fileID: 0}
-  _lineRendererPool: {fileID: 0}
   _previewLength: 10
+--- !u!114 &4203192326587846936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314333146917796487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16e85d424d327742b42c556daf3922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToNearestTarget
+  _manualTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchInterval: 0.25
+  _rotationSpeedDegPerSec: 90
+  _ignoreY: 1
+  _pivot: {fileID: 0}
+  _drawSearchGizmo: 0
+--- !u!114 &-5996334114968102052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314333146917796487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
 --- !u!1 &2234170117190238639
 GameObject:
   m_ObjectHideFlags: 0

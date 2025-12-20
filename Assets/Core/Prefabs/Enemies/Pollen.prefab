@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 7071163837036670795}
   - component: {fileID: 6812279482102462900}
   - component: {fileID: 9023823981008108034}
+  - component: {fileID: -4771505161437986389}
   m_Layer: 0
   m_Name: Pollen
   m_TagString: Untagged
@@ -136,6 +137,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RotateToTarget
   _target: {fileID: 0}
   _rotationSpeed: 0
+--- !u!114 &-4771505161437986389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529733519021233640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
 --- !u!1 &4109343596628174647
 GameObject:
   m_ObjectHideFlags: 0

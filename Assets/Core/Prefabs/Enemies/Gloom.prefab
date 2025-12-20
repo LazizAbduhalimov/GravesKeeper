@@ -293,9 +293,12 @@ GameObject:
   m_Component:
   - component: {fileID: 154063673457704546}
   - component: {fileID: 2396827771764270481}
-  - component: {fileID: 5455975059784903826}
-  - component: {fileID: 5559860641876690380}
   - component: {fileID: 5509532067910164301}
+  - component: {fileID: 3264311052375813395}
+  - component: {fileID: 1260037374330087987}
+  - component: {fileID: 4778030406786275555}
+  - component: {fileID: 5273302219386389745}
+  - component: {fileID: 7139824162094239338}
   m_Layer: 0
   m_Name: Gloom
   m_TagString: Untagged
@@ -345,41 +348,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5455975059784903826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6099711429364427427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b23f7677fcbe5c428c0b1b5010255c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateToTarget
-  _target: {fileID: 0}
-  _rotationSpeed: 15
---- !u!114 &5559860641876690380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6099711429364427427}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c82f046af63647f3b1b1b8c92b0bf14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
-  AttackRate: 2
-  _spreadAngle: 45
-  _lines: 1
-  _queues: 1
-  _timeBetweenQueues: 0.2
-  _bulletCreateTransform: {fileID: 154063673457704546}
-  _bulletsPoolData: {fileID: 0}
-  _lineRendererPool: {fileID: 0}
-  _previewLength: 5
 --- !u!114 &5509532067910164301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,14 +360,118 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafb2d3d26d324842b0ebe566c3a9016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretAttack
+  PreviewLength: 15
   AttackRate: 2
+  MissileObjectPrefab: {fileID: 3674402265416202093, guid: 80b609f0a37c4c24796924dabf7e8f17, type: 3}
+  AttackAnimationDelay: 0.3
   _bulletNumber: 1
   _timeBtwAttack: 0.2
   _bulletSpeed: 8
   _bulletCreateTransform: {fileID: 5520924288146878282}
-  _bulletsPoolData: {fileID: 0}
-  _lineRendererPool: {fileID: 0}
   _previewLength: 10
+--- !u!114 &3264311052375813395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16e85d424d327742b42c556daf3922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToNearestTarget
+  _manualTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchInterval: 0.25
+  _rotationSpeedDegPerSec: 90
+  _ignoreY: 1
+  _pivot: {fileID: 0}
+  _drawSearchGizmo: 0
+--- !u!114 &1260037374330087987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
+--- !u!114 &4778030406786275555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16e85d424d327742b42c556daf3922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToNearestTarget
+  _manualTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchInterval: 0.25
+  _rotationSpeedDegPerSec: 90
+  _ignoreY: 1
+  _pivot: {fileID: 0}
+  _drawSearchGizmo: 0
+--- !u!136 &5273302219386389745
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.74, z: 0}
+--- !u!114 &7139824162094239338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099711429364427427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116ca64f201f48d4ebf60d3b174d2616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
+  MaxHealth: 3
+  CurrentHealth: 0
 --- !u!1 &6184706176484178489
 GameObject:
   m_ObjectHideFlags: 0

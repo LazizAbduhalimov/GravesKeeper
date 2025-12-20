@@ -61,16 +61,16 @@ public class SoundManager: MonoBehaviour
 
     public void PlayFX(string fxName, Vector3? position = null)
     {
-        if (TryGetAudioSource(fxName, FXSounds, out var fx, position))
-        {
-            fx.PlayOneShot(fx.clip);
-            if (position != null)
-                fx.transform.position = position.Value;
-        }
-        else
-        {
-            Debug.LogError($"Sound FX with name {fxName} not found");
-        }
+        // if (TryGetAudioSource(fxName, FXSounds, out var fx, position))
+        // {
+        //     fx.PlayOneShot(fx.clip);
+        //     if (position != null)
+        //         fx.transform.position = position.Value;
+        // }
+        // else
+        // {
+        //     Debug.LogError($"Sound FX with name {fxName} not found");
+        // }
     }
 
     public void PlayUISound(string uiSoundName, Vector3? position = null)

@@ -1002,8 +1002,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5351477033006392859}
   - component: {fileID: 1466586968521125633}
-  - component: {fileID: 3631876066118798691}
   - component: {fileID: 4914524097112301927}
+  - component: {fileID: 8216283648643288618}
+  - component: {fileID: 2945326344275439250}
   m_Layer: 0
   m_Name: Golem Earth
   m_TagString: Untagged
@@ -1063,20 +1064,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3631876066118798691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7956830743488343814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b23f7677fcbe5c428c0b1b5010255c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateToTarget
-  _target: {fileID: 0}
-  _rotationSpeed: 15
 --- !u!114 &4914524097112301927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,13 +1076,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82f046af63647f3b1b1b8c92b0bf14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
-  AttackRate: 3.5
+  PreviewLength: 15
+  AttackRate: 6
+  MissileObjectPrefab: {fileID: 7809542201046776649, guid: c1e2b87ef11cfe34897a3b9fc9103d45, type: 3}
+  AttackAnimationDelay: 0.3
   _spreadAngle: 60
   _lines: 3
   _queues: 1
   _timeBetweenQueues: 0.2
   _bulletCreateTransform: {fileID: 647162781909288382}
-  _bulletsPoolData: {fileID: 0}
+--- !u!114 &8216283648643288618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956830743488343814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16e85d424d327742b42c556daf3922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToNearestTarget
+  _manualTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchInterval: 0.25
+  _rotationSpeedDegPerSec: 90
+  _ignoreY: 1
+  _pivot: {fileID: 0}
+  _drawSearchGizmo: 0
+--- !u!114 &2945326344275439250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956830743488343814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
 --- !u!1 &8053866035979789621
 GameObject:
   m_ObjectHideFlags: 0

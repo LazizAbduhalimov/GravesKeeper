@@ -1,5 +1,6 @@
 using PoolSystem.Alternative;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [SelectionBase]
@@ -19,18 +20,13 @@ public class MultipleLineAttack : AttackBase
 
     [Header("Pool / spawn")]
     [SerializeField] private Transform _bulletCreateTransform;
-    [SerializeField] private PoolContainer _bulletsPoolData;
-
-    [Header("Preview")]
-    [SerializeField] private PoolContainer _lineRendererPool;
-    [SerializeField] private float _previewLength = 5f;
 
     private bool _isAttacking;
     private LineRenderer[] _previewLines;
 
-    private void Start()
+    protected override void Start()
     {
-        InitializePreviewLines();
+        base.Start();
     }
 
     private void Update()
@@ -54,45 +50,53 @@ public class MultipleLineAttack : AttackBase
         }
     }
 
-    private void InitializePreviewLines()
-    {
-        if (_lineRendererPool == null) return;
-
-        int linesCount = Mathf.Max(1, _lines);
-        _previewLines = new LineRenderer[linesCount];
-        
-        for (int i = 0; i < linesCount; i++)
-        {
-            var lineObj = _lineRendererPool.Pool.GetFreeElement(false);
-            var line = lineObj.GetComponent<LineRenderer>();
-            if (line != null)
-            {
-                line.positionCount = 2;
-                line.gameObject.SetActive(true);
-                _previewLines[i] = line;
-            }
-        }
-    }
-
     private void UpdatePreviewLines()
     {
-        if (_previewLines == null) return;
-
         // Show preview only in the last 1/4 of attack cooldown
         float thresholdTime = AttackRate * 0.75f;
         bool shouldShow = PassedAttackTime >= thresholdTime && !_isAttacking;
         
         if (!shouldShow)
         {
-            foreach (var line in _previewLines)
+            if (_previewLines != null)
             {
-                if (line != null)
-                    line.gameObject.SetActive(false);
+                foreach (var line in _previewLines)
+                {
+                    if (line != null)
+                        ReturnLineRendererToPool(line);
+                }
+                _previewLines = null;
             }
             return;
         }
 
         int linesCount = Mathf.Max(1, _lines);
+        
+        // Create lines if needed
+        if (_previewLines == null || _previewLines.Length != linesCount)
+        {
+            // Return old lines
+            if (_previewLines != null)
+            {
+                foreach (var line in _previewLines)
+                {
+                    if (line != null)
+                        ReturnLineRendererToPool(line);
+                }
+            }
+            
+            // Get new lines from pool
+            _previewLines = new LineRenderer[linesCount];
+            for (int i = 0; i < linesCount; i++)
+            {
+                _previewLines[i] = GetLineRendererFromPool();
+                if (_previewLines[i] != null)
+                {
+                    _previewLines[i].positionCount = 2;
+                }
+            }
+        }
+        
         float start = -_spreadAngle * 0.5f;
         float step = (linesCount > 1) ? _spreadAngle / (linesCount - 1) : 0f;
         Vector3 startPos = _bulletCreateTransform != null ? 
@@ -108,7 +112,7 @@ public class MultipleLineAttack : AttackBase
             var direction = transform.rotation * Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             // Raycast to detect walls
             int wallLayer = LayerMask.GetMask("Wall");
-            if (Physics.Raycast(startPos, direction, out RaycastHit hit, _previewLength, wallLayer))
+            if (Physics.Raycast(startPos, direction, out RaycastHit hit, PreviewLength, wallLayer))
             {
                 // Hit something, stop line at hit point
                 _previewLines[i].SetPosition(0, startPos);
@@ -117,7 +121,7 @@ public class MultipleLineAttack : AttackBase
             else
             {
                 // No hit, draw full length
-                Vector3 endPos = startPos + direction * _previewLength;
+                Vector3 endPos = startPos + direction * PreviewLength;
                 _previewLines[i].SetPosition(0, startPos);
                 _previewLines[i].SetPosition(1, endPos);
             }
@@ -132,9 +136,10 @@ public class MultipleLineAttack : AttackBase
             {
                 if (line != null)
                 {
-                    line.gameObject.SetActive(false);
+                    ReturnLineRendererToPool(line);
                 }
             }
+            _previewLines = null;
         }
     }
 
@@ -175,10 +180,10 @@ public class MultipleLineAttack : AttackBase
 
     private void CreateBullet(Vector3 position, Quaternion rotation)
     {
-        if (_bulletsPoolData == null)
+        if (MissilesPool == null)
             return;
 
-        var bullet = _bulletsPoolData.Pool.GetFreeElement(false);
+        var bullet = MissilesPool.GetFreeElement(false);
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
     }

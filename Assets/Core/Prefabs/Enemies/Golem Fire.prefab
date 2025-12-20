@@ -170,8 +170,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3424004826610873772}
   - component: {fileID: 7055835090664281946}
-  - component: {fileID: 2835347502174542997}
   - component: {fileID: 4666596577977008353}
+  - component: {fileID: 7968782950408645822}
+  - component: {fileID: 3108928978744161491}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Untagged
@@ -231,20 +232,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2835347502174542997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755231138798925360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b23f7677fcbe5c428c0b1b5010255c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateToTarget
-  _target: {fileID: 0}
-  _rotationSpeed: 15
 --- !u!114 &4666596577977008353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,15 +244,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82f046af63647f3b1b1b8c92b0bf14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultipleLineAttack
+  PreviewLength: 15
   AttackRate: 8
+  MissileObjectPrefab: {fileID: 7809542201046776649, guid: 634c4b5182d5d2547a937c591ad98923, type: 3}
+  AttackAnimationDelay: 0.3
   _spreadAngle: 90
   _lines: 5
   _queues: 2
-  _timeBetweenQueues: 1.5
+  _timeBetweenQueues: 1
   _bulletCreateTransform: {fileID: 4371843743165394756}
-  _bulletsPoolData: {fileID: 0}
-  _lineRendererPool: {fileID: 0}
-  _previewLength: 10
+--- !u!114 &7968782950408645822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755231138798925360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16e85d424d327742b42c556daf3922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToNearestTarget
+  _manualTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _searchInterval: 0.25
+  _rotationSpeedDegPerSec: 90
+  _ignoreY: 1
+  _pivot: {fileID: 0}
+  _drawSearchGizmo: 0
+--- !u!114 &3108928978744161491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755231138798925360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
 --- !u!1 &1787323742149389304
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,22 +32,23 @@ public class EnemyBullet : MonoBehaviour
     {
         var go = collision.gameObject;
         var hasScore = true;
+        if (go == gameObject) return;
         if (go.TryGetComponent<PlayerMb>(out var player))
         {
             player.Stun();
-            
-                // Push player back
-                if (player.TryGetComponent<Rigidbody>(out var playerRb))
-                {
-                    Vector3 pushDirection = (player.transform.position - transform.position).normalized;
-                    pushDirection.y = 0; // Keep on ground level
-                    float pushForce = 4500; // Adjust force as needed
-                    playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-                }
+            // Push player back
+            if (player.TryGetComponent<Rigidbody>(out var playerRb))
+            {
+                Vector3 pushDirection = (player.transform.position - transform.position).normalized;
+                pushDirection.y = 0; // Keep on ground level
+                float pushForce = 4500; // Adjust force as needed
+                playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            }
         }
 
         if (go.TryGetComponent<HealthCompponent>(out var health))
         {
+            Debug.Log("Enemy bullet hit health component");
             hasScore = false;
             health.TakeOneDamage();
             var text = health.CurrentHealth == 0 ? "Broken" : $"hp left: {health.CurrentHealth}";

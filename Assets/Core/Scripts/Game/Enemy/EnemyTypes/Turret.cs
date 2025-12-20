@@ -8,23 +8,19 @@ public class TurretAttack : AttackBase
     [SerializeField] private float _timeBtwAttack = 0.2f;
     [SerializeField] private float _bulletSpeed = 8;
     [SerializeField] private Transform _bulletCreateTransform;
-    [SerializeField] private PoolContainer _bulletsPoolData;
     
     [Header("Preview")]
-    [SerializeField] private PoolContainer _lineRendererPool;
     [SerializeField] private float _previewLength = 5f;
-    
-    private BarController _barController;
-    
     private bool _isAttacking;
     private LineRenderer _previewLine;
+    
     private float _passedTimeBtwAttack;
     private int _bulletsCreatedWhileAttacking;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _passedTimeBtwAttack = _timeBtwAttack;
-        InitializePreviewLine();
     }
 
     private void Update()
@@ -37,34 +33,32 @@ public class TurretAttack : AttackBase
         UpdatePreviewLine();
     }
 
-    private void InitializePreviewLine()
-    {
-        if (_lineRendererPool == null) return;
-        
-        var lineObj = _lineRendererPool.Pool.GetFreeElement(false);
-        _previewLine = lineObj.GetComponent<LineRenderer>();
-        if (_previewLine != null)
-        {
-            _previewLine.positionCount = 2;
-            _previewLine.gameObject.SetActive(true);
-        }
-    }
-
     private void UpdatePreviewLine()
     {
-        if (_previewLine == null) return;
-
         // Show preview only in the last 1/4 of attack cooldown
         float thresholdTime = AttackRate * 0.75f;
         bool shouldShow = PassedAttackTime >= thresholdTime && !_isAttacking;
         
         if (!shouldShow)
         {
-            _previewLine.gameObject.SetActive(false);
+            if (_previewLine != null)
+            {
+                ReturnLineRendererToPool(_previewLine);
+                _previewLine = null;
+            }
             return;
         }
         
-        _previewLine.gameObject.SetActive(true);
+        if (_previewLine == null)
+        {
+            _previewLine = GetLineRendererFromPool();
+            if (_previewLine != null)
+            {
+                _previewLine.positionCount = 2;
+            }
+        }
+        
+        if (_previewLine == null) return;
 
         Vector3 startPos = _bulletCreateTransform != null ? 
             _bulletCreateTransform.position : transform.position;
@@ -91,7 +85,8 @@ public class TurretAttack : AttackBase
     {
         if (_previewLine != null)
         {
-            _previewLine.gameObject.SetActive(false);
+            ReturnLineRendererToPool(_previewLine);
+            _previewLine = null;
         }
     }
 
@@ -133,7 +128,7 @@ public class TurretAttack : AttackBase
 
     private void CreateBullet(Vector3 position, Quaternion rotation)
     {
-        var bullet = _bulletsPoolData.Pool.GetFreeElement(false);
+        var bullet = MissilesPool.GetFreeElement(false);
         var bulletComp = bullet.GetComponent<EnemyBullet>();
         bulletComp.Initialize(_bulletSpeed, 15, 3);
         bullet.transform.SetPositionAndRotation(position, rotation);
