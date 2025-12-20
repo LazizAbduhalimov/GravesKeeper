@@ -7,7 +7,7 @@ public class BrickMb : MonoBehaviour
 
     public void OnDisable()
     {
-        SoundManager.Instance.PlayFX(AllSfxSounds.destroy);
+        SoundManager.Instance.PlayOneShotFX(AllSfxSounds.destroy);
         Damages.Instance.SpawnNumber2("+skull", transform.position);
     }
 }

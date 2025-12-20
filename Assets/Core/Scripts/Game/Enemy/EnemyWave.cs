@@ -35,12 +35,14 @@ public class EnemyWave : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Wave[] _waves;
+    [SerializeField] private float _spawnCheckRadius = 0.5f;
     
     [Header("Wave Control")]
     [SerializeField] private bool _autoStart = false;
     [SerializeField] private float _startDelay = 2f;
     
     private int _currentWaveIndex = 0;
+    private int _currentSpawnPointIndex = 0;
     private bool _isSpawning = false;
     private Dictionary<GameObject, PoolMono<PoolObject>> _enemyPools = new Dictionary<GameObject, PoolMono<PoolObject>>();
     
@@ -139,14 +141,78 @@ public class EnemyWave : MonoBehaviour
             {
                 for (int j = 0; j < enemyData.count; j++)
                 {
-                    SpawnEnemy(enemyData.enemyPrefab);
+                    yield return StartCoroutine(SpawnEnemyWithWait(enemyData.enemyPrefab));
                     yield return new WaitForSeconds(wave.spawnInterval);
                 }
             }
         }
     }
     
-    private void SpawnEnemy(GameObject enemyPrefab)
+    private IEnumerator SpawnEnemyWithWait(GameObject enemyPrefab)
+    {
+        Transform spawnPoint = null;
+        
+        // Ждем пока не найдем свободную точку спавна
+        while (spawnPoint == null)
+        {
+            spawnPoint = GetNextAvailableSpawnPoint();
+            
+            if (spawnPoint == null)
+            {
+                // Все точки заняты, ждем 0.1 секунды и пробуем снова
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        
+        SpawnEnemy(enemyPrefab, spawnPoint);
+    }
+    
+    private Transform GetNextAvailableSpawnPoint()
+    {
+        if (_spawnPoints == null || _spawnPoints.Length == 0)
+            return null;
+        
+        int checkedPoints = 0;
+        
+        // Проверяем точки по кругу, начиная с текущего индекса
+        while (checkedPoints < _spawnPoints.Length)
+        {
+            Transform point = _spawnPoints[_currentSpawnPointIndex];
+            
+            // Проверяем, свободна ли точка
+            if (IsSpawnPointAvailable(point.position))
+            {
+                // Двигаем индекс к следующей точке для следующего спавна
+                _currentSpawnPointIndex = (_currentSpawnPointIndex + 1) % _spawnPoints.Length;
+                return point;
+            }
+            
+            // Переходим к следующей точке
+            _currentSpawnPointIndex = (_currentSpawnPointIndex + 1) % _spawnPoints.Length;
+            checkedPoints++;
+        }
+        
+        // Все точки заняты
+        return null;
+    }
+    
+    private bool IsSpawnPointAvailable(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, _spawnCheckRadius);
+        
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            // Проверяем, есть ли в радиусе враг с компонентом RotateToNearestTarget
+            if (colliders[i].GetComponent<RotateToNearestTarget>() != null)
+            {
+                return false; // Точка занята
+            }
+        }
+        
+        return true; // Точка свободна
+    }
+    
+    private void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint)
     {
         if (!_enemyPools.TryGetValue(enemyPrefab, out var pool))
         {
@@ -154,15 +220,9 @@ public class EnemyWave : MonoBehaviour
             return;
         }
         
-        Transform spawnPoint = GetRandomSpawnPoint();
         var enemy = pool.GetFreeElement(false);
         enemy.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
         enemy.gameObject.SetActive(true);
-    }
-    
-    private Transform GetRandomSpawnPoint()
-    {
-        return _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)];
     }
     
     private void OnAllWavesComplete()

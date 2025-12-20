@@ -32,7 +32,11 @@ public class EnemyBullet : MonoBehaviour
     {
         var go = collision.gameObject;
         var hasScore = true;
-        if (go == gameObject) return;
+        if (go.TryGetComponent<AttackBase>(out var attackBase) && _bounces == 0)
+        {
+            return;
+        }
+
         if (go.TryGetComponent<PlayerMb>(out var player))
         {
             player.Stun();
@@ -52,6 +56,10 @@ public class EnemyBullet : MonoBehaviour
             hasScore = false;
             health.TakeOneDamage();
             var text = health.CurrentHealth == 0 ? "Broken" : $"hp left: {health.CurrentHealth}";
+            if (attackBase)
+            {
+                text = health.CurrentHealth == 0 ? "Died" : $"hp left: {health.CurrentHealth}";
+            }
             Damages.Instance.SpawnNumber(text, go.transform.position);
         }
         else if (go.transform.parent &&
@@ -63,7 +71,7 @@ public class EnemyBullet : MonoBehaviour
             healthComp.TakeOneDamage();
         }
         
-        SoundManager.Instance.PlayFX($"hit{Random.Range(1, 4)}");
+        SoundManager.Instance.PlayOneShotFX($"hit{Random.Range(1, 4)}");
         if (hasScore)
         {
             var score = 5;

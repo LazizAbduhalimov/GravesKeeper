@@ -173,13 +173,14 @@ GameObject:
   - component: {fileID: 4666596577977008353}
   - component: {fileID: 7968782950408645822}
   - component: {fileID: 3108928978744161491}
+  - component: {fileID: 5449963580461366189}
   m_Layer: 0
   m_Name: Golem Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3424004826610873772
 Transform:
   m_ObjectHideFlags: 0
@@ -292,6 +293,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
+--- !u!114 &5449963580461366189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755231138798925360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116ca64f201f48d4ebf60d3b174d2616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
+  MaxHealth: 7
+  CurrentHealth: 0
 --- !u!1 &1787323742149389304
 GameObject:
   m_ObjectHideFlags: 0

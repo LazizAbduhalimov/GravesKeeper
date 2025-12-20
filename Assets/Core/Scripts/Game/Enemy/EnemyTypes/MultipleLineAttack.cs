@@ -23,10 +23,16 @@ public class MultipleLineAttack : AttackBase
 
     private bool _isAttacking;
     private LineRenderer[] _previewLines;
+    
+    // Кешируем для оптимизации
+    private int _wallLayerMask;
+    private float _nextRaycastTime;
+    private const float RaycastInterval = 0.1f; // Проверяем не каждый кадр
 
     protected override void Start()
     {
         base.Start();
+        _wallLayerMask = LayerMask.GetMask("Wall");
     }
 
     private void Update()
@@ -97,6 +103,10 @@ public class MultipleLineAttack : AttackBase
             }
         }
         
+        // Обновляем raycast не каждый кадр для оптимизации
+        if (Time.time < _nextRaycastTime) return;
+        _nextRaycastTime = Time.time + RaycastInterval;
+        
         float start = -_spreadAngle * 0.5f;
         float step = (linesCount > 1) ? _spreadAngle / (linesCount - 1) : 0f;
         Vector3 startPos = _bulletCreateTransform != null ? 
@@ -110,9 +120,9 @@ public class MultipleLineAttack : AttackBase
 
             float angle = start + i * step;
             var direction = transform.rotation * Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+            
             // Raycast to detect walls
-            int wallLayer = LayerMask.GetMask("Wall");
-            if (Physics.Raycast(startPos, direction, out RaycastHit hit, PreviewLength, wallLayer))
+            if (Physics.Raycast(startPos, direction, out RaycastHit hit, PreviewLength, _wallLayerMask))
             {
                 // Hit something, stop line at hit point
                 _previewLines[i].SetPosition(0, startPos);
@@ -128,7 +138,7 @@ public class MultipleLineAttack : AttackBase
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (_previewLines != null)
         {

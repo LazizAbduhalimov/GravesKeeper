@@ -138,13 +138,14 @@ GameObject:
   - component: {fileID: 707317219832346823}
   - component: {fileID: 4203192326587846936}
   - component: {fileID: -5996334114968102052}
+  - component: {fileID: 3525023206701248175}
   m_Layer: 0
   m_Name: Plant Chewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2408408881075226810
 Transform:
   m_ObjectHideFlags: 0
@@ -249,6 +250,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0d3e55b3841c046a9427285f200bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pools::PoolSystem.Alternative.PoolObject
+--- !u!114 &3525023206701248175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314333146917796487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116ca64f201f48d4ebf60d3b174d2616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthCompponent
+  MaxHealth: 3
+  CurrentHealth: 0
 --- !u!1 &2234170117190238639
 GameObject:
   m_ObjectHideFlags: 0

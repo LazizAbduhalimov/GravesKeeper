@@ -11,16 +11,22 @@ public class TurretAttack : AttackBase
     
     [Header("Preview")]
     [SerializeField] private float _previewLength = 5f;
+    
     private bool _isAttacking;
     private LineRenderer _previewLine;
-    
     private float _passedTimeBtwAttack;
     private int _bulletsCreatedWhileAttacking;
+    
+    // Кешируем для оптимизации
+    private int _wallLayerMask;
+    private float _nextRaycastTime;
+    private const float RaycastInterval = 0.1f; // Проверяем не каждый кадр
 
     protected override void Start()
     {
         base.Start();
         _passedTimeBtwAttack = _timeBtwAttack;
+        _wallLayerMask = LayerMask.GetMask("Wall");
     }
 
     private void Update()
@@ -29,7 +35,7 @@ public class TurretAttack : AttackBase
             PassedAttackTime += Time.deltaTime;
         
         RefreshReloadBar();
-        TryAttackTurret();
+        CheckAndTryAttack();
         UpdatePreviewLine();
     }
 
@@ -60,13 +66,16 @@ public class TurretAttack : AttackBase
         
         if (_previewLine == null) return;
 
+        // Обновляем raycast не каждый кадр для оптимизации
+        if (Time.time < _nextRaycastTime) return;
+        _nextRaycastTime = Time.time + RaycastInterval;
+
         Vector3 startPos = _bulletCreateTransform != null ? 
             _bulletCreateTransform.position : transform.position;
         Vector3 direction = transform.forward;
         
         // Raycast to detect walls
-        int wallLayer = LayerMask.GetMask("Wall");
-        if (Physics.Raycast(startPos, direction, out RaycastHit hit, _previewLength, wallLayer))
+        if (Physics.Raycast(startPos, direction, out RaycastHit hit, _previewLength, _wallLayerMask))
         {
             // Hit something, stop line at hit point
             _previewLine.SetPosition(0, startPos);
@@ -81,7 +90,7 @@ public class TurretAttack : AttackBase
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (_previewLine != null)
         {
@@ -116,7 +125,7 @@ public class TurretAttack : AttackBase
         _bulletsCreatedWhileAttacking = 0;
     }
 
-    private void TryAttackTurret()
+    private void CheckAndTryAttack()
     {
         if (isPerformingAttack || _isAttacking) return;
         
@@ -129,9 +138,14 @@ public class TurretAttack : AttackBase
     private void CreateBullet(Vector3 position, Quaternion rotation)
     {
         var bullet = MissilesPool.GetFreeElement(false);
-        var bulletComp = bullet.GetComponent<EnemyBullet>();
-        bulletComp.Initialize(_bulletSpeed, 15, 3);
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
+        
+        // GetComponent после SetActive для инициализации
+        var bulletComp = bullet.GetComponent<EnemyBullet>();
+        if (bulletComp != null)
+        {
+            bulletComp.Initialize(_bulletSpeed, 15, 3);
+        }
     }
 }

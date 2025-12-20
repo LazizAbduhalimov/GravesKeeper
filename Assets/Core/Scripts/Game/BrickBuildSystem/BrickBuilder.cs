@@ -69,7 +69,7 @@ public class BrickBuilder : MonoBehaviour {
             return;
         }
 
-        SoundManager.Instance.PlayFX(AllSfxSounds.place);
+        SoundManager.Instance.PlayOneShotFX(AllSfxSounds.place);
         Vector3 spawnPos = transform.position + transform.forward * _spawnDistance;
         var brick = Instantiate(BrickPrefab, spawnPos, transform.rotation);
 
