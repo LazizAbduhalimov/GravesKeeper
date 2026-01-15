@@ -33,8 +33,8 @@ public class RigidbodyMovement : MonoBehaviour, IControllable
     private void MoveInternal()
     {
         var velocity = _direction * _speed;
-        velocity.y = _rb.linearVelocity.y;
-        _rb.linearVelocity = velocity;
+        velocity.y = _rb.velocity.y;
+        _rb.velocity = velocity;
     }
 
     private void RotateAlongMoveDirection()

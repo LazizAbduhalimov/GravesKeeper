@@ -28,7 +28,7 @@ public class EnemyBullet : PoolObject
     {
         if (gameObject.activeInHierarchy)
         {
-            _rb.linearVelocity = transform.forward * _speed;
+            _rb.velocity = transform.forward * _speed;
         }
     }
 
@@ -90,7 +90,7 @@ public class EnemyBullet : PoolObject
         var reflectDir = Vector3.Reflect(transform.forward, normal);
         reflectDir = Quaternion.Euler(0f, Random.Range(-_angleError, _angleError), 0f) * reflectDir;
         transform.forward = reflectDir;
-        _rb.linearVelocity = new Vector3(reflectDir.x, 0f, reflectDir.z) * _speed;
+        _rb.velocity = new Vector3(reflectDir.x, 0f, reflectDir.z) * _speed;
     }
     
     private void RefreshBullet()

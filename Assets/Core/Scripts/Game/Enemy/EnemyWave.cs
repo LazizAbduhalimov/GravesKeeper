@@ -73,7 +73,6 @@ public class EnemyWave : MonoBehaviour
                     if (poolObject != null)
                     {
                         enemyData.poolObject = poolObject;
-                        Debug.Log(PoolServiceMono.PoolService);
                         var pool = PoolServiceMono.PoolService.GetOrRegisterPool(poolObject, 3);
                         _enemyPools[enemyData.enemyPrefab] = pool;
                     }
