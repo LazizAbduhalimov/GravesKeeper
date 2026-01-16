@@ -14,7 +14,7 @@ public class SoundManager: MonoBehaviour
 
     [HideInInspector] public AudioSource PlayingMusicSource;
     
-    private AudioSource _oneShotAudioSource;
+    [SerializeField] private AudioSource _oneShotAudioSource;
     
     public void Init()
     {
@@ -33,14 +33,6 @@ public class SoundManager: MonoBehaviour
         Musics = new List<SoundGroup>();
         FXSounds = new List<SoundGroup>();
         UISounds = new List<SoundGroup>();
-        
-        // Создаем единственный AudioSource для PlayOneShot
-        var oneShotGO = new GameObject("OneShotAudioSource");
-        oneShotGO.transform.SetParent(transform);
-        oneShotGO.transform.localPosition = Vector3.zero;
-        _oneShotAudioSource = oneShotGO.AddComponent<AudioSource>();
-        _oneShotAudioSource.playOnAwake = false;
-        _oneShotAudioSource.spatialBlend = 0f; // 2D звук
     }
     
     public void PlayRandomMusic()
